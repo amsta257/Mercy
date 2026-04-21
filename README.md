@@ -1,5 +1,5 @@
 Mercy💕💕
-Mapenzi ww
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,7 @@ Mapenzi ww
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      user-select: none; /* prevents accidental text selection on buttons */
+      user-select: none;
     }
 
     body {
@@ -193,7 +193,7 @@ Mapenzi ww
       border: 2px solid #fad1db;
     }
 
-    /* music & youtube controls */
+    /* music controls - minimal and elegant */
     .music-control {
       margin-top: 1rem;
       display: flex;
@@ -208,10 +208,9 @@ Mapenzi ww
       margin-left: auto;
       margin-right: auto;
       border: 1px solid #ffbfcf;
-      flex-wrap: wrap;
     }
     
-    .music-btn, .youtube-btn {
+    .music-btn {
       background: #e84393;
       border: none;
       color: white;
@@ -225,20 +224,10 @@ Mapenzi ww
       gap: 8px;
       transition: 0.2s;
       font-family: inherit;
-      text-decoration: none;
-    }
-    
-    .youtube-btn {
-      background: #ff0000;
     }
     
     .music-btn:hover {
       background: #c72a74;
-      transform: scale(0.97);
-    }
-    
-    .youtube-btn:hover {
-      background: #cc0000;
       transform: scale(0.97);
     }
     
@@ -336,6 +325,7 @@ Mapenzi ww
       .question { font-size: 1.6rem; }
       .btn { font-size: 1.3rem; padding: 0.6rem 1.3rem; }
       .mercy-name { font-size: 1.8rem; }
+      .music-btn { font-size: 0.9rem; padding: 6px 14px; }
     }
   </style>
 </head>
@@ -354,10 +344,9 @@ Mapenzi ww
     <button class="btn btn-no" id="noBtn">😅 No... 😅</button>
   </div>
   
-  <!-- Music + YouTube controls (Music will auto-play) -->
+  <!-- Music control - beautiful song that auto-plays -->
   <div class="music-control">
     <button class="music-btn" id="playMusicBtn">🎵 Our Romantic Song 🎵</button>
-    <a href="https://www.youtube.com/watch?v=rLV5UyD5Ah0" target="_blank" class="youtube-btn" id="youtubeLinkBtn">📺 Open "BUD FLOWERS" on YouTube 📺</a>
     <span class="music-status" id="musicStatus">♫ loading your song... ♫</span>
   </div>
   
@@ -402,12 +391,10 @@ Mapenzi ww
     for(let i = 0; i < 45; i++) setTimeout(() => createFloatingItem(), i * 170);
     setInterval(createFloatingItem, 1600);
     
-    // ---------- MUSIC IMPLEMENTATION: AUTO-PLAY WITH USER GESTURE FALLBACK ----------
-    // Using a beautiful royalty-free romantic piano track (safe, reliable, and will autoplay after user interaction)
-    // But modern browsers block autoplay without user interaction. We'll attempt to play on page load,
-    // but also attach to the first ANY click/tap. For the best experience, we'll try to play immediately
-    // and also set up a "tap anywhere" to start music if blocked.
-    const musicURL = 'https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8f7b3c3.mp3?filename=romantic-piano-103263.mp3';
+    // ---------- BEAUTIFUL SONG THAT PLAYS AUTOMATICALLY ----------
+    // Using a stunning, romantic piano melody (royalty-free from Pixabay)
+    // This song is soft, emotional, and perfect for a proposal
+    const musicURL = 'https://cdn.pixabay.com/download/audio/2022/02/22/audio_dd3f5c3f1a.mp3?filename=romantic-love-piano-109054.mp3';
     let audio = null;
     let musicPlaying = false;
     let playAttempted = false;
@@ -416,7 +403,7 @@ Mapenzi ww
       if (audio) return audio;
       audio = new Audio();
       audio.loop = true;
-      audio.volume = 0.45; // gentle volume
+      audio.volume = 0.5; // perfect volume - audible but gentle
       audio.src = musicURL;
       audio.preload = 'auto';
       return audio;
@@ -436,7 +423,7 @@ Mapenzi ww
           const playBtn = document.getElementById('playMusicBtn');
           if (playBtn) playBtn.innerHTML = '🎵 Music Playing 🎵';
         }).catch((err) => {
-          console.log("Auto-play was prevented:", err);
+          console.log("Auto-play was prevented by browser:", err);
           musicPlaying = false;
           const statusSpan = document.getElementById('musicStatus');
           if (statusSpan) statusSpan.innerHTML = '🔊 tap anywhere to play our song 🔊';
@@ -470,8 +457,7 @@ Mapenzi ww
       });
     }
     
-    // AUTO-PLAY: attempt to play music as soon as the page loads
-    // but due to browser policies, we also set up a one-time interaction listener
+    // AUTO-PLAY: attempt to play music immediately when page loads
     function attemptAutoPlay() {
       if (playAttempted) return;
       playAttempted = true;
@@ -479,32 +465,32 @@ Mapenzi ww
       startMusic();
     }
     
-    // Try to autoplay immediately
+    // Try to autoplay right away
     attemptAutoPlay();
     
-    // Fallback: if music didn't start because browser blocked it, wait for first user touch/click anywhere on page
-    // to start the magic. This ensures Mercy hears the song as soon as she interacts.
+    // Fallback: modern browsers block autoplay without user interaction.
+    // So we'll start music on the very first tap/click anywhere on the page if it didn't start yet.
     const globalStartMusic = function() {
       if (!musicPlaying) {
         startMusic();
       }
-      // remove listeners after first successful attempt or after music plays
+      // Remove listeners after first successful attempt
       document.body.removeEventListener('click', globalStartMusic);
       document.body.removeEventListener('touchstart', globalStartMusic);
     };
     
-    // Add listeners only if music isn't playing after 1 second
+    // Add fallback listeners only if music isn't playing after 0.8 seconds
     setTimeout(() => {
       if (!musicPlaying) {
         document.body.addEventListener('click', globalStartMusic);
         document.body.addEventListener('touchstart', globalStartMusic);
       }
-    }, 500);
+    }, 800);
     
-    // Preload audio fully
+    // Pre-initialize audio for faster response
     initAudio();
     
-    // ----- NO BUTTON PLAYFUL "RUN AWAY" LOGIC -----
+    // ----- NO BUTTON PLAYFUL "RUN AWAY" LOGIC (Ride or Die Edition)-----
     const yesButton = document.getElementById('yesBtn');
     const noButton = document.getElementById('noBtn');
     const modal = document.getElementById('proposalModal');
@@ -599,29 +585,31 @@ Mapenzi ww
     noButton.addEventListener('mouseenter', () => { if (dodgeAttempts < 6) moveNoButtonAway(); });
     noButton.addEventListener('touchstart', touchNoHandler);
     
-    // ---------- CELEBRATION ----------
+    // ---------- CELEBRATION (with extra joy) ----------
     function celebrateYes() {
-      // ensure music is playing for the celebration moment
+      // Ensure the romantic music is playing for the big moment
       if (!musicPlaying && audio) startMusic();
       else if (!audio) { initAudio(); startMusic(); }
       
       modal.classList.add('active');
+      
+      // Confetti explosion
       if (typeof confetti === 'function') {
-        confetti({ particleCount: 250, spread: 100, origin: { y: 0.6 }, colors: ['#e84393', '#ffb7c5', '#ff6b6b'] });
-        confetti({ particleCount: 180, spread: 130, origin: { y: 0.3, x: 0.2 }, startVelocity: 18 });
-        confetti({ particleCount: 180, spread: 130, origin: { y: 0.4, x: 0.8 }, startVelocity: 18 });
-        setTimeout(() => confetti({ particleCount: 500, spread: 80, origin: { y: 0.5 }, colors: ['#ffd966', '#e84393', '#f8c291', '#ff85a1'] }), 180);
-        setTimeout(() => confetti({ particleCount: 350, spread: 120, origin: { y: 0.7 } }), 450);
+        confetti({ particleCount: 300, spread: 110, origin: { y: 0.6 }, colors: ['#e84393', '#ffb7c5', '#ff6b6b', '#ffd966'] });
+        confetti({ particleCount: 200, spread: 140, origin: { y: 0.3, x: 0.2 }, startVelocity: 20 });
+        confetti({ particleCount: 200, spread: 140, origin: { y: 0.4, x: 0.8 }, startVelocity: 20 });
+        setTimeout(() => confetti({ particleCount: 600, spread: 90, origin: { y: 0.5 }, colors: ['#ffd966', '#e84393', '#f8c291', '#ff85a1'] }), 180);
+        setTimeout(() => confetti({ particleCount: 400, spread: 130, origin: { y: 0.7 } }), 450);
       } else {
-        for (let i=0; i<60; i++) setTimeout(() => createFloatingItem(), i*30);
+        for (let i=0; i<80; i++) setTimeout(() => createFloatingItem(), i*30);
       }
       
       // big burst of hearts and Mercy-themed elements
       const bigSymbols = ['💖', '💘', '💗', '🌸', '🔥', '💍', '👸🏽', '🌹', '✨', '💕', '🎶', '⚡'];
-      for (let i=0; i<35; i++) {
+      for (let i=0; i<40; i++) {
         const burst = document.createElement('div');
         burst.style.position = 'fixed';
-        burst.style.fontSize = (Math.random() * 45 + 28) + 'px';
+        burst.style.fontSize = (Math.random() * 48 + 28) + 'px';
         burst.style.left = Math.random() * 100 + '%';
         burst.style.top = Math.random() * 80 + 10 + '%';
         burst.style.pointerEvents = 'none';
@@ -633,18 +621,19 @@ Mapenzi ww
         setTimeout(() => burst.remove(), 1600);
       }
       
-      // Personalized floating "Ride or Die" messages
-      for (let m=0; m<20; m++) {
+      // Personalized floating "Ride or Die" messages for Mercy
+      const rideMessages = ['🔥 Ride or Die 🔥', '💖 Mercy + You Forever 💖', '⚡ Through It All ⚡', '👸🏽 My Ride or Die Queen 👸🏽', '🌹 Together Always 🌹'];
+      for (let m=0; m<25; m++) {
         const mercyMsg = document.createElement('div');
         mercyMsg.style.position = 'fixed';
-        mercyMsg.style.fontSize = (Math.random() * 28 + 20) + 'px';
+        mercyMsg.style.fontSize = (Math.random() * 30 + 22) + 'px';
         mercyMsg.style.left = Math.random() * 100 + '%';
         mercyMsg.style.top = Math.random() * 90 + '%';
         mercyMsg.style.pointerEvents = 'none';
         mercyMsg.style.zIndex = '1000';
         mercyMsg.style.opacity = '0.9';
         mercyMsg.style.animation = 'floatUp 2s ease-in-out forwards';
-        mercyMsg.innerHTML = ['🔥 Ride or Die 🔥', '💖 Mercy + You 💖', '⚡ Forever ⚡', '👸🏽 My Queen 👸🏽'][Math.floor(Math.random()*4)];
+        mercyMsg.innerHTML = rideMessages[Math.floor(Math.random() * rideMessages.length)];
         mercyMsg.style.fontWeight = 'bold';
         mercyMsg.style.fontFamily = "'Dancing Script', cursive";
         mercyMsg.style.color = '#e84393';
@@ -658,14 +647,15 @@ Mapenzi ww
     closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
     modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
     
-    // Load canvas-confetti
+    // Load canvas-confetti library
     if (typeof confetti !== 'function') {
       const script = document.createElement('script');
       script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1';
+      script.onload = () => { console.log('🎉 Confetti ready for Mercy!'); };
       document.head.appendChild(script);
     }
     
-    // Animate question text
+    // Gentle pulsing animation on question text
     const questionEl = document.querySelector('.question');
     if (questionEl) {
       setInterval(() => {
@@ -674,9 +664,10 @@ Mapenzi ww
       }, 2700);
     }
     
+    // Sparkle effect on YES button
     setTimeout(() => { if(yesButton) yesButton.style.animation = 'sparklePulse 1.2s infinite alternate'; }, 1000);
     
-    // Sweet little popup message
+    // Sweet little popup message that appears after a few seconds
     setTimeout(() => {
       const lovePopup = document.createElement('div');
       lovePopup.innerText = "🔥 Mercy, let's ride through life together 🔥";
@@ -684,20 +675,21 @@ Mapenzi ww
       lovePopup.style.bottom = '20px';
       lovePopup.style.left = '20px';
       lovePopup.style.backgroundColor = '#ffecf0';
-      lovePopup.style.padding = '8px 18px';
-      lovePopup.style.borderRadius = '40px';
+      lovePopup.style.padding = '10px 20px';
+      lovePopup.style.borderRadius = '50px';
       lovePopup.style.fontSize = '0.9rem';
       lovePopup.style.fontWeight = 'bold';
       lovePopup.style.color = '#c72a74';
-      lovePopup.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+      lovePopup.style.boxShadow = '0 6px 16px rgba(0,0,0,0.1)';
       lovePopup.style.zIndex = '1002';
       lovePopup.style.border = '1px solid #ffb7c5';
       lovePopup.style.pointerEvents = 'none';
+      lovePopup.style.fontFamily = 'inherit';
       document.body.appendChild(lovePopup);
-      setTimeout(() => lovePopup.remove(), 5500);
-    }, 2200);
+      setTimeout(() => lovePopup.remove(), 6000);
+    }, 2500);
     
-    console.log("%c🔥 Mercy, my ride or die — music is playing for you! 🔥", "color: #e84393; font-size: 15px; font-weight: bold;");
+    console.log("%c🔥 Mercy, my ride or die — beautiful music is playing just for you! 🔥", "color: #e84393; font-size: 15px; font-weight: bold;");
   })();
 </script>
 </body>
