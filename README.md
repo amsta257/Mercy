@@ -22,6 +22,7 @@ Mercy💕💕
       padding: 20px;
       position: relative;
       overflow-x: hidden;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="27" viewBox="0 0 24 27"><path fill="%23e84393" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') 16 16, auto;
     }
 
     /* Floating hearts background */
@@ -146,13 +147,40 @@ Mercy💕💕
       margin: 0 5px;
     }
 
+    /* timer container */
+    .timer-container {
+      margin: 20px auto;
+      font-family: monospace;
+      background: rgba(255, 235, 240, 0.6);
+      padding: 12px 15px;
+      border-radius: 60px;
+      width: fit-content;
+      backdrop-filter: blur(2px);
+    }
+    .timer-container p {
+      font-size: 0.9rem;
+      color: #b84c6e;
+      margin-bottom: 8px;
+    }
+    #countdown {
+      font-size: 1.6rem;
+      font-weight: bold;
+      background: #ffeef4;
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 50px;
+      color: #c13b6b;
+      letter-spacing: 1px;
+      font-family: monospace;
+    }
+
     /* buttons container */
     .buttons {
       display: flex;
       justify-content: center;
       gap: 40px;
       flex-wrap: wrap;
-      margin: 2rem 0 1rem;
+      margin: 1.5rem 0 1rem;
       position: relative;
       min-height: 95px;
     }
@@ -192,7 +220,7 @@ Mercy💕💕
       border: 2px solid #fad1db;
     }
 
-    /* music controls - minimal and elegant */
+    /* music controls */
     .music-control {
       margin-top: 1rem;
       display: flex;
@@ -236,13 +264,70 @@ Mercy💕💕
       font-weight: 500;
     }
 
+    /* secret letter button & modal */
+    .secret-letter-btn {
+      cursor: pointer;
+      font-size: 2rem;
+      display: inline-block;
+      margin-top: 10px;
+      transition: transform 0.2s;
+    }
+    .secret-letter-btn:hover {
+      transform: scale(1.1);
+    }
+    .secret-modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fffafc;
+      padding: 30px 25px;
+      border-radius: 48px;
+      z-index: 2000;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      max-width: 320px;
+      width: 85%;
+      text-align: center;
+      border: 2px solid #ffb7cb;
+      font-family: inherit;
+    }
+    .secret-modal p {
+      margin: 15px 0;
+      color: #5a2e3e;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+    .secret-modal button {
+      background: #e84393;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      padding: 8px 20px;
+      border-radius: 40px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .secret-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1999;
+      backdrop-filter: blur(4px);
+    }
+
     /* footer note */
     .footer-note {
-      margin-top: 1.8rem;
-      font-size: 0.9rem;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
       color: #cc7b99;
       border-top: 1px dashed #ffcddb;
-      padding-top: 1.3rem;
+      padding-top: 1.2rem;
       display: flex;
       justify-content: center;
       gap: 18px;
@@ -324,13 +409,23 @@ Mercy💕💕
       .question { font-size: 1.6rem; }
       .btn { font-size: 1.3rem; padding: 0.6rem 1.3rem; }
       .mercy-name { font-size: 1.8rem; }
-      .music-btn { font-size: 0.9rem; padding: 6px 14px; }
+      #countdown { font-size: 1.2rem; padding: 5px 12px; }
     }
   </style>
 </head>
 <body>
 
 <div class="floating-bg" id="floatingBg"></div>
+<div class="secret-overlay" id="secretOverlay"></div>
+<div class="secret-modal" id="secretLetterModal">
+  <p>💌 <strong>My Dearest Mercy,</strong> 💌</p>
+  <p>From the moment you walked into my life, everything changed. You are my sunshine on the darkest days, my strength when I feel weak, and my home wherever we go.</p>
+  <p>Every laugh, every memory, every little moment with you is a treasure I hold close to my heart.</p>
+  <p><strong>You are my ride or die. Forever.</strong></p>
+  <p>With all my love, ❤️</p>
+  <p>[Your Name]</p>
+  <button id="closeSecretBtn">💖 Close 💖</button>
+</div>
 
 <div class="proposal-card">
   <div class="icon-bounce">🌸💖👸🏽🔥</div>
@@ -338,12 +433,21 @@ Mercy💕💕
   <div class="sweet-message">You're my anchor, my wild heart, my forever 💗✨</div>
   <div class="question">🔥 Mercy, will you be my RIDE OR DIE? 🔥</div>
   
+  <!-- Countdown Timer -->
+  <div class="timer-container">
+    <p>❤️ Counting every moment until forever with you ❤️</p>
+    <div id="countdown">--:--:--</div>
+  </div>
+
   <div class="buttons">
     <button class="btn btn-yes" id="yesBtn">💘 YES! ALWAYS & FOREVER 💘</button>
     <button class="btn btn-no" id="noBtn">😅 No... 😅</button>
   </div>
   
-  <!-- Music control - beautiful song that auto-plays -->
+  <!-- Secret Love Letter Button -->
+  <div class="secret-letter-btn" id="secretLetterBtn">💌 Secret Letter for Mercy 💌</div>
+
+  <!-- Music control -->
   <div class="music-control">
     <button class="music-btn" id="playMusicBtn">🎵 Our Romantic Song 🎵</button>
     <span class="music-status" id="musicStatus">♫ loading your song... ♫</span>
@@ -390,9 +494,30 @@ Mercy💕💕
     for(let i = 0; i < 45; i++) setTimeout(() => createFloatingItem(), i * 170);
     setInterval(createFloatingItem, 1600);
     
-    // ---------- BEAUTIFUL SONG THAT PLAYS AUTOMATICALLY ----------
-    // Using a stunning, romantic piano melody (royalty-free from Pixabay)
-    // This song is soft, emotional, and perfect for a proposal
+    // ---------- COUNTDOWN TIMER (set to a meaningful date: edit this!) ----------
+    // Change this to your special day! Example: new Date(2025, 4, 25, 23, 59, 59) = May 25, 2025
+    const specialDay = new Date(2025, 4, 25, 23, 59, 59); // <-- EDIT THIS DATE (Year, Month(0-11), Day, Hour, Minute, Second)
+    
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = specialDay - now;
+      const countdownEl = document.getElementById("countdown");
+      if (!countdownEl) return;
+      
+      if (distance < 0) {
+        countdownEl.innerHTML = "It's OUR time! 💖 Forever starts now!";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    
+    // ---------- BEAUTIFUL SONG (auto-play attempt) ----------
     const musicURL = 'https://cdn.pixabay.com/download/audio/2022/02/22/audio_dd3f5c3f1a.mp3?filename=romantic-love-piano-109054.mp3';
     let audio = null;
     let musicPlaying = false;
@@ -402,7 +527,7 @@ Mercy💕💕
       if (audio) return audio;
       audio = new Audio();
       audio.loop = true;
-      audio.volume = 0.5; // perfect volume - audible but gentle
+      audio.volume = 0.5;
       audio.src = musicURL;
       audio.preload = 'auto';
       return audio;
@@ -412,7 +537,6 @@ Mercy💕💕
       if (!audio) initAudio();
       if (!audio) return;
       if (musicPlaying) return;
-      
       const playPromise = audio.play();
       if (playPromise !== undefined) {
         playPromise.then(() => {
@@ -421,8 +545,7 @@ Mercy💕💕
           if (statusSpan) statusSpan.innerHTML = '🎶 playing softly for you 🎶';
           const playBtn = document.getElementById('playMusicBtn');
           if (playBtn) playBtn.innerHTML = '🎵 Music Playing 🎵';
-        }).catch((err) => {
-          console.log("Auto-play was prevented by browser:", err);
+        }).catch(() => {
           musicPlaying = false;
           const statusSpan = document.getElementById('musicStatus');
           if (statusSpan) statusSpan.innerHTML = '🔊 tap anywhere to play our song 🔊';
@@ -447,54 +570,52 @@ Mercy💕💕
       else startMusic();
     }
     
-    // Attach manual play button
     const playBtnElement = document.getElementById('playMusicBtn');
-    if (playBtnElement) {
-      playBtnElement.addEventListener('click', (e) => {
-        e.preventDefault();
-        toggleMusic();
-      });
-    }
+    if (playBtnElement) playBtnElement.addEventListener('click', (e) => { e.preventDefault(); toggleMusic(); });
     
-    // AUTO-PLAY: attempt to play music immediately when page loads
     function attemptAutoPlay() {
       if (playAttempted) return;
       playAttempted = true;
       if (!audio) initAudio();
       startMusic();
     }
-    
-    // Try to autoplay right away
     attemptAutoPlay();
     
-    // Fallback: modern browsers block autoplay without user interaction.
-    // So we'll start music on the very first tap/click anywhere on the page if it didn't start yet.
     const globalStartMusic = function() {
-      if (!musicPlaying) {
-        startMusic();
-      }
-      // Remove listeners after first successful attempt
+      if (!musicPlaying) startMusic();
       document.body.removeEventListener('click', globalStartMusic);
       document.body.removeEventListener('touchstart', globalStartMusic);
     };
-    
-    // Add fallback listeners only if music isn't playing after 0.8 seconds
-    setTimeout(() => {
-      if (!musicPlaying) {
-        document.body.addEventListener('click', globalStartMusic);
-        document.body.addEventListener('touchstart', globalStartMusic);
-      }
-    }, 800);
-    
-    // Pre-initialize audio for faster response
+    setTimeout(() => { if (!musicPlaying) { document.body.addEventListener('click', globalStartMusic); document.body.addEventListener('touchstart', globalStartMusic); } }, 800);
     initAudio();
     
-    // ----- NO BUTTON PLAYFUL "RUN AWAY" LOGIC (Ride or Die Edition)-----
+    // ---------- SECRET LOVE LETTER MODAL ----------
+    const secretBtn = document.getElementById('secretLetterBtn');
+    const secretModal = document.getElementById('secretLetterModal');
+    const secretOverlay = document.getElementById('secretOverlay');
+    const closeSecretBtn = document.getElementById('closeSecretBtn');
+    
+    function openSecretLetter() {
+      if (secretModal && secretOverlay) {
+        secretModal.style.display = 'block';
+        secretOverlay.style.display = 'block';
+      }
+    }
+    function closeSecretLetter() {
+      if (secretModal && secretOverlay) {
+        secretModal.style.display = 'none';
+        secretOverlay.style.display = 'none';
+      }
+    }
+    if (secretBtn) secretBtn.addEventListener('click', openSecretLetter);
+    if (closeSecretBtn) closeSecretBtn.addEventListener('click', closeSecretLetter);
+    if (secretOverlay) secretOverlay.addEventListener('click', closeSecretLetter);
+    
+    // ---------- NO BUTTON "RUN AWAY" (RIDE OR DIE EDITION) ----------
     const yesButton = document.getElementById('yesBtn');
     const noButton = document.getElementById('noBtn');
     const modal = document.getElementById('proposalModal');
     const closeModalBtn = document.getElementById('closeModalBtn');
-    
     let dodgeAttempts = 0;
     
     function getRandomPositionInsideContainer(btn, container) {
@@ -505,9 +626,9 @@ Mercy💕💕
       const maxY = containerRect.height - btnRect.height - 15;
       let randX = Math.max(8, Math.random() * maxX);
       let randY = Math.max(8, Math.random() * maxY);
-      const yesBtn = document.getElementById('yesBtn');
-      if (yesBtn) {
-        const yesRect = yesBtn.getBoundingClientRect();
+      const yesBtnRef = document.getElementById('yesBtn');
+      if (yesBtnRef) {
+        const yesRect = yesBtnRef.getBoundingClientRect();
         const relativeYesX = yesRect.left - containerRect.left;
         const relativeYesY = yesRect.top - containerRect.top;
         if (Math.hypot(randX - relativeYesX, randY - relativeYesY) < 70 && maxX > 100) {
@@ -584,15 +705,11 @@ Mercy💕💕
     noButton.addEventListener('mouseenter', () => { if (dodgeAttempts < 6) moveNoButtonAway(); });
     noButton.addEventListener('touchstart', touchNoHandler);
     
-    // ---------- CELEBRATION (with extra joy) ----------
+    // ---------- CELEBRATION YES ----------
     function celebrateYes() {
-      // Ensure the romantic music is playing for the big moment
       if (!musicPlaying && audio) startMusic();
       else if (!audio) { initAudio(); startMusic(); }
-      
       modal.classList.add('active');
-      
-      // Confetti explosion
       if (typeof confetti === 'function') {
         confetti({ particleCount: 300, spread: 110, origin: { y: 0.6 }, colors: ['#e84393', '#ffb7c5', '#ff6b6b', '#ffd966'] });
         confetti({ particleCount: 200, spread: 140, origin: { y: 0.3, x: 0.2 }, startVelocity: 20 });
@@ -602,8 +719,6 @@ Mercy💕💕
       } else {
         for (let i=0; i<80; i++) setTimeout(() => createFloatingItem(), i*30);
       }
-      
-      // big burst of hearts and Mercy-themed elements
       const bigSymbols = ['💖', '💘', '💗', '🌸', '🔥', '💍', '👸🏽', '🌹', '✨', '💕', '🎶', '⚡'];
       for (let i=0; i<40; i++) {
         const burst = document.createElement('div');
@@ -619,8 +734,6 @@ Mercy💕💕
         document.body.appendChild(burst);
         setTimeout(() => burst.remove(), 1600);
       }
-      
-      // Personalized floating "Ride or Die" messages for Mercy
       const rideMessages = ['🔥 Ride or Die 🔥', '💖 Mercy + You Forever 💖', '⚡ Through It All ⚡', '👸🏽 My Ride or Die Queen 👸🏽', '🌹 Together Always 🌹'];
       for (let m=0; m<25; m++) {
         const mercyMsg = document.createElement('div');
@@ -646,15 +759,12 @@ Mercy💕💕
     closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
     modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
     
-    // Load canvas-confetti library
     if (typeof confetti !== 'function') {
       const script = document.createElement('script');
       script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1';
-      script.onload = () => { console.log('🎉 Confetti ready for Mercy!'); };
       document.head.appendChild(script);
     }
     
-    // Gentle pulsing animation on question text
     const questionEl = document.querySelector('.question');
     if (questionEl) {
       setInterval(() => {
@@ -663,10 +773,8 @@ Mercy💕💕
       }, 2700);
     }
     
-    // Sparkle effect on YES button
     setTimeout(() => { if(yesButton) yesButton.style.animation = 'sparklePulse 1.2s infinite alternate'; }, 1000);
     
-    // Sweet little popup message that appears after a few seconds
     setTimeout(() => {
       const lovePopup = document.createElement('div');
       lovePopup.innerText = "🔥 Mercy, let's ride through life together 🔥";
@@ -681,14 +789,13 @@ Mercy💕💕
       lovePopup.style.color = '#c72a74';
       lovePopup.style.boxShadow = '0 6px 16px rgba(0,0,0,0.1)';
       lovePopup.style.zIndex = '1002';
-      lovePopup.style.border = '1px solid #ffb7c5';
+      lovePopup.style.border = '1px solid #ffb7cb';
       lovePopup.style.pointerEvents = 'none';
-      lovePopup.style.fontFamily = 'inherit';
       document.body.appendChild(lovePopup);
       setTimeout(() => lovePopup.remove(), 6000);
     }, 2500);
     
-    console.log("%c🔥 Mercy, my ride or die — beautiful music is playing just for you! 🔥", "color: #e84393; font-size: 15px; font-weight: bold;");
+    console.log("%c🔥 Mercy, my ride or die — music, countdown & secret letter ready! 🔥", "color: #e84393; font-size: 15px; font-weight: bold;");
   })();
 </script>
 </body>
