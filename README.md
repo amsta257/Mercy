@@ -10,7 +10,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      user-select: none; /* prevents accidental text selection on buttons */
+      user-select: none;
     }
 
     body {
@@ -25,7 +25,7 @@
       overflow-x: hidden;
     }
 
-    /* Floating hearts, roses & sparkles background */
+    /* Floating hearts background */
     .floating-bg {
       position: fixed;
       top: 0;
@@ -74,7 +74,6 @@
       box-shadow: 0 35px 55px rgba(0, 0, 0, 0.2), 0 0 0 12px rgba(255, 190, 210, 0.7);
       padding: 2rem 2rem 2.5rem;
       text-align: center;
-      transition: all 0.3s ease;
       animation: softAppear 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
 
@@ -89,7 +88,6 @@
       }
     }
 
-    /* romantic header */
     .icon-bounce {
       font-size: 5.2rem;
       filter: drop-shadow(2px 8px 18px rgba(0, 0, 0, 0.15));
@@ -179,7 +177,6 @@
       background: #e84393;
       color: white;
       border: 2px solid #ffbfcf;
-      transition: 0.2s;
     }
 
     .btn-yes:hover {
@@ -196,9 +193,64 @@
       border: 2px solid #fad1db;
     }
 
+    /* music & youtube controls */
+    .music-control {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 235, 240, 0.8);
+      backdrop-filter: blur(4px);
+      padding: 8px 20px;
+      border-radius: 100px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid #ffbfcf;
+      flex-wrap: wrap;
+    }
+    
+    .music-btn, .youtube-btn {
+      background: #e84393;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      padding: 8px 18px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+      font-family: inherit;
+      text-decoration: none;
+    }
+    
+    .youtube-btn {
+      background: #ff0000;
+    }
+    
+    .music-btn:hover {
+      background: #c72a74;
+      transform: scale(0.97);
+    }
+    
+    .youtube-btn:hover {
+      background: #cc0000;
+      transform: scale(0.97);
+    }
+    
+    .music-status {
+      font-size: 0.8rem;
+      color: #b84c6e;
+      font-weight: 500;
+    }
+
     /* footer note */
     .footer-note {
-      margin-top: 2rem;
+      margin-top: 1.8rem;
       font-size: 0.9rem;
       color: #cc7b99;
       border-top: 1px dashed #ffcddb;
@@ -207,10 +259,6 @@
       justify-content: center;
       gap: 18px;
       flex-wrap: wrap;
-    }
-
-    .footer-note span {
-      font-size: 1rem;
     }
 
     /* YES celebration modal */
@@ -243,7 +291,6 @@
       border-radius: 55px;
       padding: 2rem 1.8rem;
       text-align: center;
-      box-shadow: 0 30px 45px rgba(0, 0, 0, 0.3);
       transform: scale(0.8);
       transition: transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
       border: 2px solid #ffb7cb;
@@ -258,12 +305,6 @@
       color: #d43f7a;
       font-family: 'Dancing Script', cursive;
       margin-bottom: 0.5rem;
-    }
-
-    .modal-content p {
-      font-size: 1.2rem;
-      margin: 0.7rem 0;
-      color: #5a2e3e;
     }
 
     .celebration-zone {
@@ -282,41 +323,19 @@
       margin-top: 20px;
       cursor: pointer;
       font-weight: bold;
-      transition: all 0.2s;
     }
 
-    .close-modal:hover {
-      background: #b32c6b;
-      transform: scale(0.96);
-    }
-
-    /* sparkle animation */
     @keyframes sparklePulse {
       0% { text-shadow: 0 0 0 #ffb7c5; }
       100% { text-shadow: 0 0 12px #ff80a5, 0 0 5px #ffb347; }
     }
 
-    /* responsive */
     @media (max-width: 550px) {
-      .proposal-card {
-        padding: 1.5rem;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      .question {
-        font-size: 1.6rem;
-      }
-      .btn {
-        font-size: 1.3rem;
-        padding: 0.6rem 1.3rem;
-      }
-      .icon-bounce {
-        font-size: 4rem;
-      }
-      .mercy-name {
-        font-size: 1.8rem;
-      }
+      .proposal-card { padding: 1.5rem; }
+      h1 { font-size: 2rem; }
+      .question { font-size: 1.6rem; }
+      .btn { font-size: 1.3rem; padding: 0.6rem 1.3rem; }
+      .mercy-name { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -335,6 +354,13 @@
     <button class="btn btn-no" id="noBtn">😅 No... 😅</button>
   </div>
   
+  <!-- Music + YouTube controls -->
+  <div class="music-control">
+    <button class="music-btn" id="playMusicBtn">🎵 Our Romantic Song 🎵</button>
+    <a href="https://www.youtube.com/watch?v=rLV5UyD5Ah0" target="_blank" class="youtube-btn" id="youtubeLinkBtn">📺 Open "BUD FLOWERS" on YouTube 📺</a>
+    <span class="music-status" id="musicStatus">♫ click to add magic ♫</span>
+  </div>
+  
   <div class="footer-note">
     <span>💞 You make my world magical 💞</span>
     <span>⭐️ Mercy = My sunshine ⭐️</span>
@@ -342,7 +368,7 @@
   </div>
 </div>
 
-<!-- Acceptance modal with Mercy's name -->
+<!-- Acceptance modal -->
 <div id="proposalModal" class="modal">
   <div class="modal-content">
     <div class="celebration-zone">🎉💖🥳💍✨🎊</div>
@@ -356,9 +382,9 @@
 
 <script>
   (function() {
-    // ---------- floating hearts + cute icons (including Mercy themed) ----------
+    // Floating hearts background
     const floatContainer = document.getElementById('floatingBg');
-    const FLOATING_ITEMS = ['❤️', '💖', '💗', '🌸', '🌼', '💫', '✨', '💘', '💕', '🌺', '🦋', '🌹', '👸🏽', '💍', '🌟'];
+    const FLOATING_ITEMS = ['❤️', '💖', '💗', '🌸', '🌼', '💫', '✨', '💘', '💕', '🌺', '🦋', '🌹', '👸🏽', '💍', '🌟', '🎵', '🎶'];
     
     function createFloatingItem() {
       const el = document.createElement('i');
@@ -373,79 +399,76 @@
       setTimeout(() => { if(el && el.remove) el.remove(); }, 17000);
     }
     
-    for(let i = 0; i < 45; i++) {
-      setTimeout(() => createFloatingItem(), i * 170);
-    }
+    for(let i = 0; i < 45; i++) setTimeout(() => createFloatingItem(), i * 170);
     setInterval(createFloatingItem, 1600);
     
-    // ---------- elements ----------
+    // ---------- ROMANTIC MUSIC (Royalty-free, plays in background) ----------
+    const musicURL = 'https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8f7b3c3.mp3?filename=romantic-piano-103263.mp3';
+    let audio = null;
+    let musicPlaying = false;
+    
+    function initAudio() {
+      if (audio) return audio;
+      audio = new Audio();
+      audio.loop = true;
+      audio.volume = 0.4;
+      audio.src = musicURL;
+      audio.preload = 'auto';
+      return audio;
+    }
+    
+    function startMusic() {
+      if (!audio) initAudio();
+      if (!audio) return;
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          musicPlaying = true;
+          const statusSpan = document.getElementById('musicStatus');
+          if (statusSpan) statusSpan.innerHTML = '🎶 playing softly for you 🎶';
+          const playBtn = document.getElementById('playMusicBtn');
+          if (playBtn) playBtn.innerHTML = '🎵 Music Playing 🎵';
+        }).catch(() => {
+          musicPlaying = false;
+          document.getElementById('musicStatus').innerHTML = '🔊 click play to hear our song 🔊';
+        });
+      }
+    }
+    
+    function stopMusic() {
+      if (audio && musicPlaying) {
+        audio.pause();
+        musicPlaying = false;
+        document.getElementById('musicStatus').innerHTML = '🎵 music paused — click to resume 🎵';
+        document.getElementById('playMusicBtn').innerHTML = '🎵 Play our song 🎵';
+      }
+    }
+    
+    function toggleMusic() {
+      if (!audio) initAudio();
+      if (musicPlaying) stopMusic();
+      else startMusic();
+    }
+    
+    document.getElementById('playMusicBtn').addEventListener('click', toggleMusic);
+    
+    // Preload audio on first interaction
+    function preloadAudio() {
+      if (!audio) initAudio();
+      document.body.removeEventListener('click', preloadAudio);
+      document.body.removeEventListener('touchstart', preloadAudio);
+    }
+    document.body.addEventListener('click', preloadAudio);
+    document.body.addEventListener('touchstart', preloadAudio);
+    
+    // ----- No button playful run away -----
     const yesButton = document.getElementById('yesBtn');
     const noButton = document.getElementById('noBtn');
     const modal = document.getElementById('proposalModal');
     const closeModalBtn = document.getElementById('closeModalBtn');
     
-    // Celebration: confetti + modal + floating burst (personalized for Mercy)
-    function celebrateYes() {
-      modal.classList.add('active');
-      
-      // confetti library check + burst
-      if (typeof confetti === 'function') {
-        confetti({ particleCount: 250, spread: 100, origin: { y: 0.6 }, colors: ['#e84393', '#ffb7c5', '#ff6b9d', '#f7c0cb', '#ff9fbc'] });
-        confetti({ particleCount: 180, spread: 130, origin: { y: 0.3, x: 0.2 }, startVelocity: 18 });
-        confetti({ particleCount: 180, spread: 130, origin: { y: 0.4, x: 0.8 }, startVelocity: 18 });
-        setTimeout(() => {
-          confetti({ particleCount: 500, spread: 80, origin: { y: 0.5 }, startVelocity: 22, colors: ['#ffd966', '#e84393', '#f8c291', '#ffb3c6', '#ff85a1'] });
-        }, 180);
-        setTimeout(() => {
-          confetti({ particleCount: 350, spread: 120, origin: { y: 0.7 }, startVelocity: 16 });
-        }, 450);
-      } else {
-        // fallback extra floating hearts
-        for (let i=0; i<60; i++) setTimeout(() => createFloatingItem(), i*30);
-      }
-      
-      // big burst of hearts and Mercy-themed elements all over screen
-      const bigSymbols = ['💖', '💘', '💗', '🌸', '🎀', '💍', '👸🏽', '🌹', '✨', '💕'];
-      for (let i=0; i<30; i++) {
-        const burstHeart = document.createElement('div');
-        burstHeart.style.position = 'fixed';
-        burstHeart.style.fontSize = (Math.random() * 45 + 28) + 'px';
-        burstHeart.style.left = Math.random() * 100 + '%';
-        burstHeart.style.top = Math.random() * 80 + 10 + '%';
-        burstHeart.style.pointerEvents = 'none';
-        burstHeart.style.zIndex = '999';
-        burstHeart.style.opacity = '0.9';
-        burstHeart.style.animation = 'floatUp 1.5s ease-out forwards';
-        burstHeart.innerHTML = bigSymbols[Math.floor(Math.random() * bigSymbols.length)];
-        document.body.appendChild(burstHeart);
-        setTimeout(() => burstHeart.remove(), 1600);
-      }
-      
-      // Extra personalized floating "Mercy" hearts
-      for (let m=0; m<15; m++) {
-        const mercyHeart = document.createElement('div');
-        mercyHeart.style.position = 'fixed';
-        mercyHeart.style.fontSize = (Math.random() * 30 + 24) + 'px';
-        mercyHeart.style.left = Math.random() * 100 + '%';
-        mercyHeart.style.top = Math.random() * 90 + '%';
-        mercyHeart.style.pointerEvents = 'none';
-        mercyHeart.style.zIndex = '1000';
-        mercyHeart.style.opacity = '0.85';
-        mercyHeart.style.animation = 'floatUp 2s ease-in-out forwards';
-        mercyHeart.innerHTML = '💖 Mercy 💖';
-        mercyHeart.style.fontWeight = 'bold';
-        mercyHeart.style.fontFamily = "'Dancing Script', cursive";
-        mercyHeart.style.color = '#e84393';
-        mercyHeart.style.textShadow = '0 0 5px white';
-        document.body.appendChild(mercyHeart);
-        setTimeout(() => mercyHeart.remove(), 2100);
-      }
-    }
-    
-    // ----- NO button playful "run away" logic with romantic twist for Mercy-----
     let dodgeAttempts = 0;
     
-    // helper to get random position inside buttons container
     function getRandomPositionInsideContainer(btn, container) {
       if (!container) return { x: 10, y: 10 };
       const containerRect = container.getBoundingClientRect();
@@ -454,15 +477,12 @@
       const maxY = containerRect.height - btnRect.height - 15;
       let randX = Math.max(8, Math.random() * maxX);
       let randY = Math.max(8, Math.random() * maxY);
-      // Avoid overlapping too much with yes button area
       const yesBtn = document.getElementById('yesBtn');
       if (yesBtn) {
         const yesRect = yesBtn.getBoundingClientRect();
         const relativeYesX = yesRect.left - containerRect.left;
         const relativeYesY = yesRect.top - containerRect.top;
-        const dx = randX - relativeYesX;
-        const dy = randY - relativeYesY;
-        if (Math.hypot(dx, dy) < 70 && maxX > 100) {
+        if (Math.hypot(randX - relativeYesX, randY - relativeYesY) < 70 && maxX > 100) {
           randX = (randX + 70) % maxX;
           randY = (randY + 50) % maxY;
         }
@@ -473,25 +493,18 @@
     function moveNoButtonAway() {
       const container = document.querySelector('.buttons');
       if (!container) return;
-      const btn = noButton;
-      // change to absolute if not already
-      if (window.getComputedStyle(btn).position !== 'absolute') {
-        btn.style.position = 'absolute';
+      if (window.getComputedStyle(noButton).position !== 'absolute') {
+        noButton.style.position = 'absolute';
         container.style.position = 'relative';
         container.style.minHeight = '95px';
-        // set initial left/top from current offset
-        const leftPos = btn.offsetLeft;
-        const topPos = btn.offsetTop;
-        btn.style.left = leftPos + 'px';
-        btn.style.top = topPos + 'px';
-        btn.style.margin = '0';
+        noButton.style.left = noButton.offsetLeft + 'px';
+        noButton.style.top = noButton.offsetTop + 'px';
+        noButton.style.margin = '0';
       }
-      const { x, y } = getRandomPositionInsideContainer(btn, container);
-      btn.style.left = x + 'px';
-      btn.style.top = y + 'px';
-      
+      const { x, y } = getRandomPositionInsideContainer(noButton, container);
+      noButton.style.left = x + 'px';
+      noButton.style.top = y + 'px';
       dodgeAttempts++;
-      // Playful text transformation (including Mercy)
       if (dodgeAttempts === 2) {
         noButton.textContent = "🥺 Wait, Mercy? 🥺";
         noButton.style.background = "#e2b6c2";
@@ -504,134 +517,84 @@
         noButton.style.background = "#e84393";
         noButton.style.color = "white";
         noButton.style.border = "2px solid gold";
-        // remove all dodge events and convert to yes action
         noButton.removeEventListener('click', noClickHandler);
         noButton.removeEventListener('mouseenter', moveNoButtonAway);
         noButton.removeEventListener('touchstart', touchNoHandler);
         noButton.addEventListener('click', () => celebrateYes());
         noButton.style.cursor = 'pointer';
-        noButton.style.transform = 'scale(1.02)';
-        noButton.style.transition = '0.2s';
-      } else if (dodgeAttempts > 6) {
-        // already converted, nothing else
-        return;
       }
     }
     
-    // Handlers for no button
     function noClickHandler(e) {
       e.preventDefault();
-      if (dodgeAttempts >= 6) {
-        celebrateYes();
-        return;
-      }
+      if (dodgeAttempts >= 6) { celebrateYes(); return; }
       moveNoButtonAway();
-      // add cute floating message with Mercy's name
-      const tempMsg = document.createElement('div');
-      tempMsg.innerText = "💗 Mercy, think again? 💗";
-      tempMsg.style.position = 'fixed';
-      tempMsg.style.left = e.clientX + 'px';
-      tempMsg.style.top = e.clientY - 40 + 'px';
-      tempMsg.style.backgroundColor = '#fff0f3';
-      tempMsg.style.padding = '6px 15px';
-      tempMsg.style.borderRadius = '50px';
-      tempMsg.style.fontSize = '0.95rem';
-      tempMsg.style.fontWeight = 'bold';
-      tempMsg.style.color = '#c72a74';
-      tempMsg.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-      tempMsg.style.zIndex = '10001';
-      tempMsg.style.pointerEvents = 'none';
-      document.body.appendChild(tempMsg);
-      setTimeout(() => tempMsg.remove(), 850);
+      const msg = document.createElement('div');
+      msg.innerText = "💗 Mercy, think again? 💗";
+      msg.style.position = 'fixed';
+      msg.style.left = e.clientX + 'px';
+      msg.style.top = e.clientY - 40 + 'px';
+      msg.style.backgroundColor = '#fff0f3';
+      msg.style.padding = '6px 15px';
+      msg.style.borderRadius = '50px';
+      msg.style.fontSize = '0.95rem';
+      msg.style.fontWeight = 'bold';
+      msg.style.color = '#c72a74';
+      msg.style.zIndex = '10001';
+      msg.style.pointerEvents = 'none';
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 850);
     }
     
     function touchNoHandler(e) {
       e.preventDefault();
-      if (dodgeAttempts >= 6) {
-        celebrateYes();
-        return;
-      }
-      moveNoButtonAway();
+      if (dodgeAttempts >= 6) celebrateYes();
+      else moveNoButtonAway();
     }
     
-    function mouseEnterHandler() {
-      if (dodgeAttempts < 6) {
-        moveNoButtonAway();
-      }
-    }
-    
-    // Attach dodge events
     noButton.addEventListener('click', noClickHandler);
-    noButton.addEventListener('mouseenter', mouseEnterHandler);
+    noButton.addEventListener('mouseenter', () => { if (dodgeAttempts < 6) moveNoButtonAway(); });
     noButton.addEventListener('touchstart', touchNoHandler);
     
-    // YES button event
-    yesButton.addEventListener('click', () => {
-      celebrateYes();
-    });
-    
-    // Close modal logic
-    closeModalBtn.addEventListener('click', () => {
-      modal.classList.remove('active');
-      // extra love hearts after closing modal
-      for(let i=0; i<30; i++) {
-        setTimeout(() => createFloatingItem(), i * 50);
+    // Celebration
+    function celebrateYes() {
+      if (!musicPlaying && audio) startMusic();
+      modal.classList.add('active');
+      if (typeof confetti === 'function') {
+        confetti({ particleCount: 250, spread: 100, origin: { y: 0.6 }, colors: ['#e84393', '#ffb7c5'] });
+        confetti({ particleCount: 180, spread: 130, origin: { y: 0.3, x: 0.2 } });
+        confetti({ particleCount: 180, spread: 130, origin: { y: 0.4, x: 0.8 } });
+        setTimeout(() => confetti({ particleCount: 500, spread: 80, origin: { y: 0.5 } }), 180);
+      } else {
+        for (let i=0; i<60; i++) setTimeout(() => createFloatingItem(), i*30);
       }
-    });
-    
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
+      for (let i=0; i<30; i++) {
+        const burst = document.createElement('div');
+        burst.style.position = 'fixed';
+        burst.style.fontSize = (Math.random() * 45 + 28) + 'px';
+        burst.style.left = Math.random() * 100 + '%';
+        burst.style.top = Math.random() * 80 + 10 + '%';
+        burst.style.pointerEvents = 'none';
+        burst.style.zIndex = '999';
+        burst.style.animation = 'floatUp 1.5s ease-out forwards';
+        burst.innerHTML = ['💖', '💘', '🌸', '💍', '👸🏽', '🎵'][Math.floor(Math.random()*6)];
+        document.body.appendChild(burst);
+        setTimeout(() => burst.remove(), 1600);
       }
-    });
+    }
     
-    // Load canvas-confetti dynamically
+    yesButton.addEventListener('click', celebrateYes);
+    closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
+    
     if (typeof confetti !== 'function') {
       const script = document.createElement('script');
       script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1';
-      script.onload = () => {
-        console.log('confetti ready for Mercy');
-      };
       document.head.appendChild(script);
     }
     
-    // extra romantic effect: heartbeat on question text
-    const questionEl = document.querySelector('.question');
-    if (questionEl) {
-      setInterval(() => {
-        questionEl.style.transform = 'scale(1.02)';
-        setTimeout(() => { if(questionEl) questionEl.style.transform = 'scale(1)'; }, 400);
-      }, 2700);
-    }
-    
-    // Preload a gentle sparkle on Yes button after load
-    setTimeout(() => {
-      if(yesButton) yesButton.style.animation = 'sparklePulse 1.2s infinite alternate';
-    }, 1000);
-    
-    // Add a special little floating message after 2 seconds: "Mercy, you're amazing 🌸"
-    setTimeout(() => {
-      const lovePopup = document.createElement('div');
-      lovePopup.innerText = "🌸 Mercy, you're my dream come true 🌸";
-      lovePopup.style.position = 'fixed';
-      lovePopup.style.bottom = '20px';
-      lovePopup.style.left = '20px';
-      lovePopup.style.backgroundColor = '#ffecf0';
-      lovePopup.style.padding = '8px 18px';
-      lovePopup.style.borderRadius = '40px';
-      lovePopup.style.fontSize = '0.9rem';
-      lovePopup.style.fontWeight = 'bold';
-      lovePopup.style.color = '#c72a74';
-      lovePopup.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-      lovePopup.style.zIndex = '1002';
-      lovePopup.style.fontFamily = 'inherit';
-      lovePopup.style.border = '1px solid #ffb7c5';
-      lovePopup.style.pointerEvents = 'none';
-      document.body.appendChild(lovePopup);
-      setTimeout(() => lovePopup.remove(), 5000);
-    }, 2200);
-    
-    console.log("%c💖 Mercy, the answer is YES from the bottom of my heart! 💖", "color: #e84393; font-size: 15px; font-weight: bold;");
+    setTimeout(() => { if(yesButton) yesButton.style.animation = 'sparklePulse 1.2s infinite alternate'; }, 1000);
+    console.log("%c💖 Mercy, you're my everything! 💖", "color: #e84393; font-size: 16px; font-weight: bold;");
   })();
 </script>
 </body>
