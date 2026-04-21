@@ -1,10 +1,10 @@
-# Mercy
-<!DOCTYPE html>
+Mercy💕💕
+Mapenzi ww
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Mercy, will you be my girlfriend? 💖</title>
+  <title>Mercy, will you be my Ride or Die? 💖</title>
   <style>
     * {
       margin: 0;
@@ -133,7 +133,7 @@
       letter-spacing: 1px;
       background: rgba(255, 235, 240, 0.8);
       display: inline-block;
-      padding: 0.2rem 1.5rem;
+      padding: 0.3rem 1.8rem;
       border-radius: 80px;
     }
 
@@ -344,13 +344,13 @@
 <div class="floating-bg" id="floatingBg"></div>
 
 <div class="proposal-card">
-  <div class="icon-bounce">🌸💖👸🏽🌸</div>
-  <h1>To my sweet <span class="mercy-name">Mercy</span> 🌹</h1>
-  <div class="sweet-message">Every heartbeat whispers your name, Mercy 💗✨</div>
-  <div class="question">💍 Mercy, will you be my girlfriend? 💍</div>
+  <div class="icon-bounce">🌸💖👸🏽🔥</div>
+  <h1>To my everything, <span class="mercy-name">Mercy</span> 🌹</h1>
+  <div class="sweet-message">You're my anchor, my wild heart, my forever 💗✨</div>
+  <div class="question">🔥 Mercy, will you be my RIDE OR DIE? 🔥</div>
   
   <div class="buttons">
-    <button class="btn btn-yes" id="yesBtn">💘 YES! ABSOLUTELY 💘</button>
+    <button class="btn btn-yes" id="yesBtn">💘 YES! ALWAYS & FOREVER 💘</button>
     <button class="btn btn-no" id="noBtn">😅 No... 😅</button>
   </div>
   
@@ -362,21 +362,21 @@
   </div>
   
   <div class="footer-note">
-    <span>💞 You make my world magical 💞</span>
-    <span>⭐️ Mercy = My sunshine ⭐️</span>
-    <span>🌹 I'm crazy about you 🌹</span>
+    <span>💞 Through every storm and every sunrise 💞</span>
+    <span>⭐️ Mercy = My ride or die ⭐️</span>
+    <span>🌹 Together forever, no matter what 🌹</span>
   </div>
 </div>
 
 <!-- Acceptance modal -->
 <div id="proposalModal" class="modal">
   <div class="modal-content">
-    <div class="celebration-zone">🎉💖🥳💍✨🎊</div>
-    <h2>MERCY SAID YES! 💕👸🏽</h2>
+    <div class="celebration-zone">🎉💖🔥💍✨🎊</div>
+    <h2>MERCY SAID YES! 💕👸🏽🔥</h2>
     <p>You've just made me the happiest person in the universe, Mercy! 🌟</p>
-    <p>I promise to cherish you, make you smile, and love you more every single day. 💗</p>
-    <p><strong>🌸 Officially my girlfriend — my Mercy 🌸</strong></p>
-    <button class="close-modal" id="closeModalBtn">💋 To forever with you 💋</button>
+    <p>I promise to ride with you through every high and every low, to always have your back, and to love you more every single day. 💗</p>
+    <p><strong>🔥 My Ride or Die — my Mercy 🔥</strong></p>
+    <button class="close-modal" id="closeModalBtn">💋 To forever and beyond 💋</button>
   </div>
 </div>
 
@@ -384,7 +384,7 @@
   (function() {
     // Floating hearts background
     const floatContainer = document.getElementById('floatingBg');
-    const FLOATING_ITEMS = ['❤️', '💖', '💗', '🌸', '🌼', '💫', '✨', '💘', '💕', '🌺', '🦋', '🌹', '👸🏽', '💍', '🌟', '🎵', '🎶'];
+    const FLOATING_ITEMS = ['❤️', '💖', '💗', '🌸', '🌼', '💫', '✨', '💘', '💕', '🌺', '🦋', '🌹', '👸🏽', '💍', '🌟', '🎵', '🎶', '🔥', '⚡'];
     
     function createFloatingItem() {
       const el = document.createElement('i');
@@ -513,7 +513,7 @@
         noButton.style.background = "#ffb7c5";
         noButton.style.color = "#a1345a";
       } else if (dodgeAttempts === 6) {
-        noButton.textContent = "💘 YES, MERCY LOVES YOU! 💘";
+        noButton.textContent = "💘 YES! I'M YOUR RIDE OR DIE! 💘";
         noButton.style.background = "#e84393";
         noButton.style.color = "white";
         noButton.style.border = "2px solid gold";
@@ -530,7 +530,7 @@
       if (dodgeAttempts >= 6) { celebrateYes(); return; }
       moveNoButtonAway();
       const msg = document.createElement('div');
-      msg.innerText = "💗 Mercy, think again? 💗";
+      msg.innerText = "💗 Mercy, think again? Be my ride or die 💗";
       msg.style.position = 'fixed';
       msg.style.left = e.clientX + 'px';
       msg.style.top = e.clientY - 40 + 'px';
@@ -561,14 +561,18 @@
       if (!musicPlaying && audio) startMusic();
       modal.classList.add('active');
       if (typeof confetti === 'function') {
-        confetti({ particleCount: 250, spread: 100, origin: { y: 0.6 }, colors: ['#e84393', '#ffb7c5'] });
-        confetti({ particleCount: 180, spread: 130, origin: { y: 0.3, x: 0.2 } });
-        confetti({ particleCount: 180, spread: 130, origin: { y: 0.4, x: 0.8 } });
-        setTimeout(() => confetti({ particleCount: 500, spread: 80, origin: { y: 0.5 } }), 180);
+        confetti({ particleCount: 250, spread: 100, origin: { y: 0.6 }, colors: ['#e84393', '#ffb7c5', '#ff6b6b'] });
+        confetti({ particleCount: 180, spread: 130, origin: { y: 0.3, x: 0.2 }, startVelocity: 18 });
+        confetti({ particleCount: 180, spread: 130, origin: { y: 0.4, x: 0.8 }, startVelocity: 18 });
+        setTimeout(() => confetti({ particleCount: 500, spread: 80, origin: { y: 0.5 }, colors: ['#ffd966', '#e84393', '#f8c291', '#ff85a1'] }), 180);
+        setTimeout(() => confetti({ particleCount: 350, spread: 120, origin: { y: 0.7 } }), 450);
       } else {
         for (let i=0; i<60; i++) setTimeout(() => createFloatingItem(), i*30);
       }
-      for (let i=0; i<30; i++) {
+      
+      // big burst of hearts and Mercy-themed elements
+      const bigSymbols = ['💖', '💘', '💗', '🌸', '🔥', '💍', '👸🏽', '🌹', '✨', '💕', '🎶', '⚡'];
+      for (let i=0; i<35; i++) {
         const burst = document.createElement('div');
         burst.style.position = 'fixed';
         burst.style.fontSize = (Math.random() * 45 + 28) + 'px';
@@ -576,10 +580,31 @@
         burst.style.top = Math.random() * 80 + 10 + '%';
         burst.style.pointerEvents = 'none';
         burst.style.zIndex = '999';
+        burst.style.opacity = '0.9';
         burst.style.animation = 'floatUp 1.5s ease-out forwards';
-        burst.innerHTML = ['💖', '💘', '🌸', '💍', '👸🏽', '🎵'][Math.floor(Math.random()*6)];
+        burst.innerHTML = bigSymbols[Math.floor(Math.random() * bigSymbols.length)];
         document.body.appendChild(burst);
         setTimeout(() => burst.remove(), 1600);
+      }
+      
+      // Personalized floating "Ride or Die" messages
+      for (let m=0; m<20; m++) {
+        const mercyMsg = document.createElement('div');
+        mercyMsg.style.position = 'fixed';
+        mercyMsg.style.fontSize = (Math.random() * 28 + 20) + 'px';
+        mercyMsg.style.left = Math.random() * 100 + '%';
+        mercyMsg.style.top = Math.random() * 90 + '%';
+        mercyMsg.style.pointerEvents = 'none';
+        mercyMsg.style.zIndex = '1000';
+        mercyMsg.style.opacity = '0.9';
+        mercyMsg.style.animation = 'floatUp 2s ease-in-out forwards';
+        mercyMsg.innerHTML = ['🔥 Ride or Die 🔥', '💖 Mercy + You 💖', '⚡ Forever ⚡', '👸🏽 My Queen 👸🏽'][Math.floor(Math.random()*4)];
+        mercyMsg.style.fontWeight = 'bold';
+        mercyMsg.style.fontFamily = "'Dancing Script', cursive";
+        mercyMsg.style.color = '#e84393';
+        mercyMsg.style.textShadow = '0 0 5px white';
+        document.body.appendChild(mercyMsg);
+        setTimeout(() => mercyMsg.remove(), 2100);
       }
     }
     
@@ -593,8 +618,39 @@
       document.head.appendChild(script);
     }
     
+    // Animate question text
+    const questionEl = document.querySelector('.question');
+    if (questionEl) {
+      setInterval(() => {
+        questionEl.style.transform = 'scale(1.02)';
+        setTimeout(() => { if(questionEl) questionEl.style.transform = 'scale(1)'; }, 400);
+      }, 2700);
+    }
+    
     setTimeout(() => { if(yesButton) yesButton.style.animation = 'sparklePulse 1.2s infinite alternate'; }, 1000);
-    console.log("%c💖 Mercy, you're my everything! 💖", "color: #e84393; font-size: 16px; font-weight: bold;");
+    
+    // Sweet little popup message
+    setTimeout(() => {
+      const lovePopup = document.createElement('div');
+      lovePopup.innerText = "🔥 Mercy, let's ride through life together 🔥";
+      lovePopup.style.position = 'fixed';
+      lovePopup.style.bottom = '20px';
+      lovePopup.style.left = '20px';
+      lovePopup.style.backgroundColor = '#ffecf0';
+      lovePopup.style.padding = '8px 18px';
+      lovePopup.style.borderRadius = '40px';
+      lovePopup.style.fontSize = '0.9rem';
+      lovePopup.style.fontWeight = 'bold';
+      lovePopup.style.color = '#c72a74';
+      lovePopup.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+      lovePopup.style.zIndex = '1002';
+      lovePopup.style.border = '1px solid #ffb7c5';
+      lovePopup.style.pointerEvents = 'none';
+      document.body.appendChild(lovePopup);
+      setTimeout(() => lovePopup.remove(), 5500);
+    }, 2200);
+    
+    console.log("%c🔥 Mercy, my ride or die, forever by your side! 🔥", "color: #e84393; font-size: 15px; font-weight: bold;");
   })();
 </script>
 </body>
